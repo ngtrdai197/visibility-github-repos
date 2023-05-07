@@ -6,7 +6,7 @@ const octokit = new Octokit({
   auth: process.env.ACCESS_TOKEN,
 });
 
-const ownerName = "ngtrdai197";
+const ownerName = process.env.OWNER_NAME;
 const makePublic = true;
 
 async function makeReposPublic() {
@@ -15,7 +15,7 @@ async function makeReposPublic() {
   });
   const reposToMakePublic = repos.map((el) => el.name);
 
-  for (const repoName of []) {
+  for (const repoName of reposToMakePublic) {
     try {
       await octokit.repos.update({
         owner: ownerName,
